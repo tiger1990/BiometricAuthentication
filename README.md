@@ -14,4 +14,4 @@ Biometric Login With Remote Server:
 Below Flow Diagram is taken from : medium post:
 #https://medium.com/androiddevelopers/biometric-authentication-on-android-part-2-bc4d0dae9863
 
-![alt text](https://github.com/tiger1990/BiometricAuthentication/biometric_state_flow.png?raw=true)
+![alt text](https://github.com/tiger1990/BiometricAuthentication/blob/main/biometric_state_flow.png?raw=true)
