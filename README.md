@@ -9,6 +9,13 @@ Deprecates the FingerprintManager class. If your bundled and system apps use thi
 
 ![alt text](https://github.com/tiger1990/BiometricAuthentication/blob/main/biometri_arch.png?raw=true)
 
+BiometricPrompt class is used to prompt a system dialog to the user requesting to authenticate using biometric credentials. Let’s initialize BiometricPrompt class first, it has 3 parameter
+Context
+Executor: Allows you to specify a thread on which your callbacks should be run
+AuthenticationCallback: An abstract class which have 3 methods onAuthenticationError(Called when an unrecoverable error has been encountered and the operation is complete)
+onAuthenticationSucceeded(Called when a biometric is recognized)
+onAuthenticationFailed(Called when a biometric is valid but not recognized)
+
 
 Biometric Login With Remote Server:
 Below Flow Diagram is taken from : medium post:
