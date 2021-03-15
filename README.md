@@ -17,6 +17,16 @@ AuthenticationCallback: An abstract class which have 3 methods onAuthenticationE
 onAuthenticationSucceeded(Called when a biometric is recognized)
 onAuthenticationFailed(Called when a biometric is valid but not recognized)
 
+
+
+Biometric Login With Remote Server:
+Below Flow Diagram is taken from : medium post:
+#https://medium.com/androiddevelopers/biometric-authentication-on-android-part-2-bc4d0dae9863
+
+![alt text](https://github.com/tiger1990/BiometricAuthentication/blob/main/biometric_state_flow.png?raw=true)
+
+
+
 #Biometrics + Cryptography
 
 Crypto-based authentication is about using -biometric- authentication to perform an encryption or decryption operation. 
@@ -28,12 +38,8 @@ You can perform a crypto-based authentication by generating a secret key and sto
 creating and configuring a cryptographic operation, like a Cipher, wrapping it in aCryptoObject then passing it to a BiometricPrompt when authenticating.
 
 
+Crypto-based authentication can replace remote server authentication. Instead of requesting your server to authenticate a user every time they open your app, you can instead require a remote server authentication the very first time they use the app, or whenever their token expires and is no longer valid. Once authenticated by the server, the app can encrypt the server token using a secret key backed by the user’s biometrics, then store the encrypted token on disk.
 
-Biometric Login With Remote Server:
-Below Flow Diagram is taken from : medium post:
-#https://medium.com/androiddevelopers/biometric-authentication-on-android-part-2-bc4d0dae9863
-
-![alt text](https://github.com/tiger1990/BiometricAuthentication/blob/main/biometric_state_flow.png?raw=true)
-
+Later when the user opens the app again, they will be authenticated by decrypting the stored -encrypted- token using their biometrics.
 
 
