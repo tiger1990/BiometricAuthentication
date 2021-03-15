@@ -9,6 +9,15 @@ Deprecates the FingerprintManager class. If your bundled and system apps use thi
 
 ![alt text](https://github.com/tiger1990/BiometricAuthentication/blob/main/biometri_arch.png?raw=false)
 
+.fstPage  {
+    background-image:url("https://github.com/tiger1990/BiometricAuthentication/blob/main/biometri_arch.png");
+    background-color: lightgray;
+    height: 700px;
+    width:100%;
+    background-size:cover;
+}
+<div class="fstPage"></div>
+
 BiometricPrompt class is used to prompt a system dialog to the user requesting to authenticate using biometric credentials. Let’s initialize BiometricPrompt class first, it has 3 parameter
 Context
 Executor: Allows you to specify a thread on which your callbacks should be run
