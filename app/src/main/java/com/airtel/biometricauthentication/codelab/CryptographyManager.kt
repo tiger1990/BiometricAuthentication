@@ -54,8 +54,8 @@ private class CryptographyManagerImpl : CryptographyManager {
 
     private val KEY_SIZE = 256
     private val ANDROID_KEYSTORE = "AndroidKeyStore"
-    private val ENCRYPTION_BLOCK_MODE = KeyProperties.BLOCK_MODE_GCM
-    private val ENCRYPTION_PADDING = KeyProperties.ENCRYPTION_PADDING_NONE
+    private val ENCRYPTION_BLOCK_MODE = KeyProperties.BLOCK_MODE_CBC //KeyProperties.BLOCK_MODE_GCM
+    private val ENCRYPTION_PADDING = KeyProperties.ENCRYPTION_PADDING_PKCS7 //KeyProperties.ENCRYPTION_PADDING_NONE
     private val ENCRYPTION_ALGORITHM = KeyProperties.KEY_ALGORITHM_AES
 
     override fun getInitializedCipherForEncryption(keyName: String): Cipher {
@@ -97,22 +97,19 @@ private class CryptographyManagerImpl : CryptographyManager {
         keyStore.getKey(keyName, null)?.let { return it as SecretKey }
 
         // if you reach here, then a new SecretKey must be generated for that keyName
-        val paramsBuilder = KeyGenParameterSpec.Builder(
-            keyName,
-            KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-        )
+        val keyProperties = KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+        val paramsBuilder = KeyGenParameterSpec.Builder(keyName, keyProperties)
         paramsBuilder.apply {
             setBlockModes(ENCRYPTION_BLOCK_MODE)
-            setEncryptionPaddings(ENCRYPTION_PADDING)
-            setKeySize(KEY_SIZE)
             setUserAuthenticationRequired(true)
+            setEncryptionPaddings(ENCRYPTION_PADDING)
+            //setInvalidatedByBiometricEnrollment(invalidatedByBiometricEnrollment)
+            setKeySize(KEY_SIZE)
+
         }
 
         val keyGenParams = paramsBuilder.build()
-        val keyGenerator = KeyGenerator.getInstance(
-            KeyProperties.KEY_ALGORITHM_AES,
-            ANDROID_KEYSTORE
-        )
+        val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, ANDROID_KEYSTORE)
         keyGenerator.init(keyGenParams)
         return keyGenerator.generateKey()
     }

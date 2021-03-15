@@ -3,18 +3,17 @@ package com.airtel.biometricauthentication.codelab
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK
+import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import androidx.biometric.BiometricPrompt
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
-import com.airtel.biometricauthentication.MainActivity
 import com.airtel.biometricauthentication.R
 import com.airtel.biometricauthentication.databinding.ActivityLoginBinding
 import com.google.android.material.snackbar.Snackbar
@@ -44,7 +43,8 @@ class LoginActivity: AppCompatActivity() {
     }
 
     private fun checkCanBiometricAuthenticate() {
-        val canAuthenticate = BiometricManager.from(applicationContext).canAuthenticate()
+        val authenticationTypes = BIOMETRIC_WEAK or DEVICE_CREDENTIAL
+        val canAuthenticate = BiometricManager.from(applicationContext).canAuthenticate(authenticationTypes)
         if(canAuthenticate == BiometricManager.BIOMETRIC_SUCCESS){
             binding.useBiometrics.visibility = View.VISIBLE
             setClickListeners()
