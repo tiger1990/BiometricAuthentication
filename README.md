@@ -43,3 +43,16 @@ Crypto-based authentication can replace remote server authentication. Instead of
 Later when the user opens the app again, they will be authenticated by decrypting the stored -encrypted- token using their biometrics.
 
 
+#Encrypting the server token and storing it for future authentications
+![alt text](https://github.com/tiger1990/BiometricAuthentication/blob/main/encrypting_server_token.png?raw=true)
+
+
+
+
+#Decrypting the stored encrypted token to authenticate the user
+![alt text](https://github.com/tiger1990/BiometricAuthentication/blob/main/decrypting_stored_token.png?raw=true)
+
+
+
+
+
