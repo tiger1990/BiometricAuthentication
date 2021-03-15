@@ -17,9 +17,23 @@ AuthenticationCallback: An abstract class which have 3 methods onAuthenticationE
 onAuthenticationSucceeded(Called when a biometric is recognized)
 onAuthenticationFailed(Called when a biometric is valid but not recognized)
 
+#Biometrics + Cryptography
+
+Crypto-based authentication is about using -biometric- authentication to perform an encryption or decryption operation. 
+It secures the use of a cryptographic secret key by ensuring it’s only ever accessed if the user is successfully recognized -authenticated-.
+Using crypto-based authentication is supported from API level 23, and assumes the use of a strong authenticator starting from API level 30. 
+
+It requires the use of a CryptoObject, which is a wrapper around a Cipher, MAC, or Signature.
+You can perform a crypto-based authentication by generating a secret key and storing in the keyStore,
+creating and configuring a cryptographic operation, like a Cipher, wrapping it in aCryptoObject then passing it to a BiometricPrompt when authenticating.
+
+
 
 Biometric Login With Remote Server:
 Below Flow Diagram is taken from : medium post:
 #https://medium.com/androiddevelopers/biometric-authentication-on-android-part-2-bc4d0dae9863
 
 ![alt text](https://github.com/tiger1990/BiometricAuthentication/blob/main/biometric_state_flow.png?raw=true)
+
+
+
