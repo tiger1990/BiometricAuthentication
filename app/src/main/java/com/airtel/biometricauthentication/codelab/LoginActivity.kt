@@ -48,8 +48,7 @@ class LoginActivity: AppCompatActivity() {
         if(canAuthenticate == BiometricManager.BIOMETRIC_SUCCESS){
             binding.useBiometrics.visibility = View.VISIBLE
             setClickListeners()
-        }else
-        {
+        }else {
             binding.useBiometrics.visibility = View.INVISIBLE
         }
     }
