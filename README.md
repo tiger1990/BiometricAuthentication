@@ -7,16 +7,8 @@ Includes fingerprint and face authentication integration for BiometricPrompt
 Android 9 Includes fingerprint integration only for BiometricPrompt.
 Deprecates the FingerprintManager class. If your bundled and system apps use this class, update them to use BiometricPrompt and BiometricManager instead.
 
-![alt text](https://github.com/tiger1990/BiometricAuthentication/blob/main/biometri_arch.png?raw=false)
+![image](https://github.com/tiger1990/BiometricAuthentication/blob/main/biometri_arch.png?raw=false)
 
-.fstPage  {
-    background-image:url("https://github.com/tiger1990/BiometricAuthentication/blob/main/biometri_arch.png");
-    background-color: lightgray;
-    height: 700px;
-    width:100%;
-    background-size:cover;
-}
-<div class="fstPage"></div>
 
 BiometricPrompt class is used to prompt a system dialog to the user requesting to authenticate using biometric credentials. Let’s initialize BiometricPrompt class first, it has 3 parameter
 Context
