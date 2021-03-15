@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BiometricAuthentication">
         <activity android:name=".MainActivity">
+
+        </activity>
+
+        <activity android:name=".codelab.EnableBiometricLoginActivity" />
+        <activity android:name=".codelab.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
